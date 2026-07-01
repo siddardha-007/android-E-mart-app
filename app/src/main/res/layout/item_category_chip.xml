@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:paddingHorizontal="14dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category"
+        android:textColor="#9E9E9E"
+        android:textStyle="bold"
+        android:textSize="15sp"/>
+
+    <View
+        android:id="@+id/indicator"
+        android:layout_width="24dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="6dp"
+        android:background="#1A6E8A"/> </LinearLayout>

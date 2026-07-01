@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F8F9FA">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fillViewport="true"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,137 +19,197 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="24dp">
 
-            <!-- Header -->
-
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16dp"
-                android:gravity="center_vertical">
+                android:paddingHorizontal="16dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="12dp">
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:id="@+id/layoutLocation"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_pill_bordered"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="11dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Deliver To"
-                        android:textStyle="bold"
-                        android:textSize="14sp"/>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_menu_mylocation"
+                        app:tint="#1A6E8A" />
 
                     <TextView
                         android:id="@+id/tvLocation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Hyderabad"
-                        android:textSize="18sp"
-                        android:textStyle="bold"/>
-
+                        android:text="Chennai, India"
+                        android:textColor="#333333"
+                        android:textSize="14sp"
+                        android:layout_marginStart="6dp"
+                        android:fontFamily="sans-serif-medium"/>
                 </LinearLayout>
 
-                <ImageView
+                <LinearLayout
+                    android:id="@+id/layoutDeliveryInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toEndOf="@id/layoutLocation"
+                    app:layout_constraintEnd_toStartOf="@id/ivProfile"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_delivery_scooter"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginStart="6dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Free delivery"
+                            android:textColor="#999999"
+                            android:textSize="11sp"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="1600+"
+                                android:textColor="#333333"
+                                android:textStyle="bold"
+                                android:textSize="12sp"/>
+
+                            <ImageView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_marginStart="2dp"
+                                android:src="@android:drawable/ic_dialog_info"
+                                app:tint="#999999"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/ivProfile"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@android:drawable/sym_def_app_icon"/>
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:src="@drawable/img_avatar"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.MaterialComponents.SmallComponent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!-- Search -->
-
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/searchView"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginHorizontal="16dp"
-                android:queryHint="Search Products"/>
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/bg_search_rounded">
 
-            <!-- Banner -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="16dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@android:drawable/ic_menu_search"
+                        app:tint="#6DB2CB"/>
+
+                    <EditText
+                        android:id="@+id/etSearch"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:hint="What are u looking for ?"
+                        android:textColorHint="#96C2D6"
+                        android:textSize="15sp"
+                        android:layout_marginStart="10dp"
+                        android:inputType="text"
+                        android:importantForAutofill="no"/>
+                </LinearLayout>
+            </FrameLayout>
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewPagerBanner"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"/>
-
-            <!-- Categories -->
+                android:layout_height="150dp"
+                android:layout_marginTop="12dp"
+                android:clipToPadding="false"
+                android:clipChildren="false"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Categories"
+                android:text="Categories 😋"
+                android:textColor="#222222"
                 android:textStyle="bold"
-                android:textSize="22sp"
-                android:layout_margin="16dp"/>
+                android:textSize="18sp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="12dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvCategories"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:orientation="horizontal"/>
-
-            <!-- Featured -->
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:paddingHorizontal="16dp"
-                android:gravity="center_vertical">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Featured Products"
-                    android:textStyle="bold"
-                    android:textSize="22sp"/>
-
-                <TextView
-                    android:id="@+id/tvSeeAll"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="See All"
-                    android:textColor="#4CAF50"/>
-
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvFeatured"
-                android:layout_width="match_parent"
-                android:layout_height="280dp"
-                android:orientation="horizontal"/>
-
-            <!-- Best Deals -->
+                android:layout_marginHorizontal="12dp"
+                android:nestedScrollingEnabled="false"
+                tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                tools:spanCount="4"
+                tools:listitem="@layout/item_category"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Best Deals"
+                android:text="Best deals 🔥"
+                android:textColor="#222222"
                 android:textStyle="bold"
-                android:textSize="22sp"
-                android:layout_margin="16dp"/>
+                android:textSize="18sp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="12dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvBestDeals"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"/>
+                android:orientation="horizontal"
+                android:paddingHorizontal="12dp"
+                android:clipToPadding="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_product_card"/>
 
         </LinearLayout>
-
-    </ScrollView>
-
-    <!-- Bottom Navigation -->
-
-
-
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,48 +5,32 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1A237E"
+    android:background="#2A83A2"
     tools:context=".ui.SplashActivity">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_logo_container"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        app:cardCornerRadius="70dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="#3B9BBB"
+        app:strokeWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.45">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/iv_splash_logo"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginBottom="16dp"
-            android:contentDescription="App Logo"
-            android:src="@mipmap/ic_launcher_round" />
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_rabbit"
+            app:tint="#FFFFFF"
+            android:contentDescription="App Logo" />
 
-        <TextView
-            android:id="@+id/tv_splash_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="E-Shop"
-            android:textColor="#FFFFFF"
-            android:textSize="40sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tv_splash_tagline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Your Premium Shopping Destination"
-            android:textColor="#B0BEC5"
-            android:textSize="14sp"
-            android:letterSpacing="0.05" />
-
-    </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <ProgressBar
         android:id="@+id/pb_splash_loading"
@@ -55,17 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
         android:indeterminateTint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="v1.0.0"
-        android:textColor="#78909C"
-        android:textSize="12sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

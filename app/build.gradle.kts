@@ -13,7 +13,7 @@ android {
         viewBinding = true
     }
 
-    namespace = "com.example.ecommerce"
+    namespace = "com.example.ecommerceshop"
     compileSdk = 37
 
     defaultConfig {
@@ -90,6 +90,12 @@ dependencies {
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")
 
+
+    // Jetpack Navigation Component
+    val nav_version = "2.8.5" // Use the latest stable version
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
     // Location Services
     implementation("com.google.android.gms:play-services-location:21.3.0")
 
@@ -99,4 +105,5 @@ dependencies {
     //swiper
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
+    implementation("com.google.firebase:firebase-appcheck-debug:19.2.0")
 }

@@ -4,7 +4,13 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+    <queries>
+        <package android:name="com.google.android.gms" />
+    </queries>
+
     <application
+        android:name=".EcommerceApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -16,9 +22,7 @@
         <activity
             android:name=".ui.payment.PaymentSuccessActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.payment.PaymentActivity"
-            android:exported="false" />
+
         <activity
             android:name=".ui.products.ProductDetailsActivity"
             android:exported="false" />

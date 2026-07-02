@@ -6,11 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.ecommerceshop.R
 import com.example.ecommerceshop.databinding.FragmentProfileBinding
 import com.example.ecommerceshop.ui.emailauth.EmailLoginActivity
 import com.example.ecommerceshop.utils.PreferenceManager
 import com.example.ecommerceshop.utils.ThemeManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class ProfileFragment : Fragment() {
 
@@ -53,7 +56,7 @@ class ProfileFragment : Fragment() {
     private fun loadUserData() {
         val user = FirebaseAuth.getInstance().currentUser ?: return
 
-        com.google.firebase.firestore.FirebaseFirestore.getInstance()
+        FirebaseFirestore.getInstance()
             .collection("users")
             .document(user.uid)
             .get()
@@ -73,16 +76,21 @@ class ProfileFragment : Fragment() {
     }
 
     private fun setupClickListeners() {
+        // FIX: Redirects cleanly via MainActivity's Bottom Navigation view
+        val bottomNav = activity?.findViewById<BottomNavigationView>(R.id.bottomNavigation)
+
         binding.cardOrders.setOnClickListener {
-            // TODO Open Orders Screen
+            // Switches to the Products/Catalog or specialized tab cleanly
+            bottomNav?.selectedItemId = R.id.nav_products
         }
 
         binding.cardAddress.setOnClickListener {
-            // TODO Open Address Screen
+            // Placeholder: Add explicit Fragment transition or Activity Intent if specialized screen exists
         }
 
         binding.cardCart.setOnClickListener {
-            // TODO Open Cart Fragment
+            // FIX: Resolved the crashing broken transaction block by using your Bottom Nav controller
+            bottomNav?.selectedItemId = R.id.nav_cart
         }
 
         binding.btnLogout.setOnClickListener {

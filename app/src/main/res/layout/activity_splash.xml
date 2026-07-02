@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#2A83A2"
-    tools:context=".ui.SplashActivity">
+    tools:context=".ui.intro.SplashActivity">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cv_logo_container"

@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://tools.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F9FA">
+    android:background="?android:attr/windowBackground">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
@@ -36,6 +36,7 @@
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
                     android:background="@drawable/bg_pill_bordered"
+                    android:backgroundTint="?attr/colorSurfaceVariant"
                     android:paddingHorizontal="14dp"
                     android:paddingVertical="11dp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -46,14 +47,14 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic_menu_mylocation"
-                        app:tint="#1A6E8A" />
+                        app:tint="?attr/colorPrimary" />
 
                     <TextView
                         android:id="@+id/tvLocation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Chennai, India"
-                        android:textColor="#333333"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="14sp"
                         android:layout_marginStart="6dp"
                         android:fontFamily="sans-serif-medium"/>
@@ -74,7 +75,7 @@
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_delivery_scooter"/>
+                        android:src="@drawable/ic_delivery_scooter" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -86,7 +87,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Free delivery"
-                            android:textColor="#999999"
+                            android:textColor="?android:attr/textColorSecondary"
                             android:textSize="11sp"/>
 
                         <LinearLayout
@@ -99,7 +100,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="1600+"
-                                android:textColor="#333333"
+                                android:textColor="#FF2D55"
                                 android:textStyle="bold"
                                 android:textSize="12sp"/>
 
@@ -108,7 +109,7 @@
                                 android:layout_height="12dp"
                                 android:layout_marginStart="2dp"
                                 android:src="@android:drawable/ic_dialog_info"
-                                app:tint="#999999"/>
+                                app:tint="?android:attr/textColorSecondary"/>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -130,20 +131,22 @@
                 android:layout_height="50dp"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginVertical="8dp"
-                android:background="@drawable/bg_search_rounded">
+                android:background="@drawable/bg_search_rounded"
+                android:backgroundTint="?attr/colorSurfaceVariant">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
-                    android:layout_marginStart="16dp">
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp">
 
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@android:drawable/ic_menu_search"
-                        app:tint="#6DB2CB"/>
+                        app:tint="?attr/colorPrimary"/>
 
                     <EditText
                         android:id="@+id/etSearch"
@@ -151,7 +154,8 @@
                         android:layout_height="match_parent"
                         android:background="@android:color/transparent"
                         android:hint="What are u looking for ?"
-                        android:textColorHint="#96C2D6"
+                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColorHint="?android:attr/textColorSecondary"
                         android:textSize="15sp"
                         android:layout_marginStart="10dp"
                         android:inputType="text"
@@ -162,7 +166,7 @@
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewPagerBanner"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="155dp"
                 android:layout_marginTop="12dp"
                 android:clipToPadding="false"
                 android:clipChildren="false"/>
@@ -171,7 +175,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Categories 😋"
-                android:textColor="#222222"
+                android:textColor="?android:attr/textColorPrimary"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:layout_marginHorizontal="16dp"
@@ -192,7 +196,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Best deals 🔥"
-                android:textColor="#222222"
+                android:textColor="?android:attr/textColorPrimary"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:layout_marginHorizontal="16dp"
@@ -207,7 +211,7 @@
                 android:paddingHorizontal="12dp"
                 android:clipToPadding="false"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_product_card"/>
+                tools:listitem="@layout/item_product"/>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

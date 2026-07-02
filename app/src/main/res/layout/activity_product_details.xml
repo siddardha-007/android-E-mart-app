@@ -5,7 +5,7 @@
     xmlns:tools="http://tools.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="?android:attr/windowBackground">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
@@ -24,7 +24,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="320dp"
-                android:background="@drawable/bg_product_hero_curve">
+                android:background="@drawable/bg_product_hero_curve"
+                android:backgroundTint="?attr/colorSurfaceVariant">
 
                 <ImageView
                     android:id="@+id/ivProduct"
@@ -56,8 +57,9 @@
                         android:layout_marginBottom="12dp"
                         app:cardCornerRadius="14dp"
                         app:cardElevation="0dp"
-                        app:strokeColor="#2A83A2"
-                        app:strokeWidth="2dp">
+                        app:strokeColor="?attr/colorPrimary"
+                        app:strokeWidth="2dp"
+                        app:cardBackgroundColor="?attr/colorSurface">
                         <ImageView
                             android:id="@+id/ivThumb1"
                             android:layout_width="match_parent"
@@ -72,8 +74,9 @@
                         android:layout_height="56dp"
                         app:cardCornerRadius="14dp"
                         app:cardElevation="0dp"
-                        app:strokeColor="#ECEFF1"
-                        app:strokeWidth="1.5dp">
+                        app:strokeColor="?attr/colorSurfaceVariant"
+                        app:strokeWidth="1.5dp"
+                        app:cardBackgroundColor="?attr/colorSurface">
                         <ImageView
                             android:id="@+id/ivThumb2"
                             android:layout_width="match_parent"
@@ -117,10 +120,11 @@
                         android:maxLines="1"
                         android:layout_marginStart="14dp"
                         android:background="@drawable/bg_discount_pill_light"
+                        android:backgroundTint="?attr/colorSecondaryContainer"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="6dp"
                         android:text="52% OFF ends in 3 days"
-                        android:textColor="#2A83A2"
+                        android:textColor="?attr/colorPrimary"
                         android:textStyle="bold"
                         android:textSize="11sp"/>
                 </LinearLayout>
@@ -131,7 +135,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="Bell Pepper Nutella karmen lopu Karmen mon"
-                    android:textColor="#212121"
+                    android:textColor="?android:attr/textColorPrimary"
                     android:textStyle="bold"
                     android:textSize="17sp"/>
 
@@ -147,7 +151,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Quantity : 1Kg"
-                        android:textColor="#2A83A2"
+                        android:textColor="?attr/colorPrimary"
                         android:textStyle="bold"
                         android:textSize="14sp"/>
 
@@ -156,7 +160,7 @@
                         android:layout_height="14dp"
                         android:layout_marginStart="4dp"
                         android:src="@android:drawable/arrow_down_float"
-                        app:tint="#2A83A2"/>
+                        app:tint="?attr/colorPrimary"/>
                 </LinearLayout>
 
                 <TextView
@@ -165,7 +169,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="14dp"
                     android:text="Categories : solip , kolimatrio , hellop , mafirat , mop lopiranto"
-                    android:textColor="#90A4AE"
+                    android:textColor="?android:attr/textColorSecondary"
                     android:textSize="13sp"
                     android:lineSpacingMultiplier="1.1"/>
 
@@ -184,13 +188,15 @@
                         android:layout_columnWeight="1"
                         android:layout_margin="5dp"
                         android:background="@drawable/bg_metric_card"
+                        android:backgroundTint="?attr/colorSurfaceVariant"
                         android:orientation="horizontal"
                         android:padding="12dp"
                         android:gravity="center_vertical">
                         <ImageView
                             android:layout_width="32dp"
                             android:layout_height="32dp"
-                            android:src="@android:drawable/ic_menu_myplaces"/>
+                            android:src="@android:drawable/ic_menu_myplaces"
+                            app:tint="?attr/colorPrimary"/>
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -201,13 +207,13 @@
                                 android:layout_height="wrap_content"
                                 android:text="80 kcal"
                                 android:textStyle="bold"
-                                android:textColor="#1A6E8A"
+                                android:textColor="?attr/colorPrimary"
                                 android:textSize="14sp"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="100 Gram"
-                                android:textColor="#90A4AE"
+                                android:textColor="?android:attr/textColorSecondary"
                                 android:textSize="11sp"/>
                         </LinearLayout>
                     </LinearLayout>
@@ -218,13 +224,15 @@
                         android:layout_columnWeight="1"
                         android:layout_margin="5dp"
                         android:background="@drawable/bg_metric_card"
+                        android:backgroundTint="?attr/colorSurfaceVariant"
                         android:orientation="horizontal"
                         android:padding="12dp"
                         android:gravity="center_vertical">
                         <ImageView
                             android:layout_width="32dp"
                             android:layout_height="32dp"
-                            android:src="@android:drawable/ic_menu_gallery"/>
+                            android:src="@android:drawable/ic_menu_gallery"
+                            app:tint="?attr/colorPrimary"/>
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -235,13 +243,13 @@
                                 android:layout_height="wrap_content"
                                 android:text="100%"
                                 android:textStyle="bold"
-                                android:textColor="#1A6E8A"
+                                android:textColor="?attr/colorPrimary"
                                 android:textSize="14sp"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Organic"
-                                android:textColor="#90A4AE"
+                                android:textColor="?android:attr/textColorSecondary"
                                 android:textSize="11sp"/>
                         </LinearLayout>
                     </LinearLayout>
@@ -252,13 +260,15 @@
                         android:layout_columnWeight="1"
                         android:layout_margin="5dp"
                         android:background="@drawable/bg_metric_card"
+                        android:backgroundTint="?attr/colorSurfaceVariant"
                         android:orientation="horizontal"
                         android:padding="12dp"
                         android:gravity="center_vertical">
                         <ImageView
                             android:layout_width="32dp"
                             android:layout_height="32dp"
-                            android:src="@android:drawable/ic_menu_day"/>
+                            android:src="@android:drawable/ic_menu_day"
+                            app:tint="?attr/colorPrimary"/>
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -269,13 +279,13 @@
                                 android:layout_height="wrap_content"
                                 android:text="1 Year"
                                 android:textStyle="bold"
-                                android:textColor="#1A6E8A"
+                                android:textColor="?attr/colorPrimary"
                                 android:textSize="14sp"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Expiration"
-                                android:textColor="#90A4AE"
+                                android:textColor="?android:attr/textColorSecondary"
                                 android:textSize="11sp"/>
                         </LinearLayout>
                     </LinearLayout>
@@ -286,6 +296,7 @@
                         android:layout_columnWeight="1"
                         android:layout_margin="5dp"
                         android:background="@drawable/bg_metric_card"
+                        android:backgroundTint="?attr/colorSurfaceVariant"
                         android:orientation="horizontal"
                         android:padding="12dp"
                         android:gravity="center_vertical">
@@ -303,13 +314,13 @@
                                 android:layout_height="wrap_content"
                                 android:text="4.8 (256)"
                                 android:textStyle="bold"
-                                android:textColor="#1A6E8A"
+                                android:textColor="?attr/colorPrimary"
                                 android:textSize="14sp"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Reviews"
-                                android:textColor="#90A4AE"
+                                android:textColor="?android:attr/textColorSecondary"
                                 android:textSize="11sp"/>
                         </LinearLayout>
                     </LinearLayout>
@@ -334,7 +345,7 @@
             app:cardCornerRadius="20dp"
             app:cardElevation="2dp"
             app:strokeWidth="0dp"
-            app:cardBackgroundColor="#FFFFFF"
+            app:cardBackgroundColor="?attr/colorSurface"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent">
             <ImageView
@@ -342,7 +353,7 @@
                 android:layout_height="18dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_back"
-                app:tint="#333333"/>
+                app:tint="?android:attr/textColorPrimary"/>
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
@@ -352,7 +363,7 @@
             app:cardCornerRadius="20dp"
             app:cardElevation="2dp"
             app:strokeWidth="0dp"
-            app:cardBackgroundColor="#FFFFFF"
+            app:cardBackgroundColor="?attr/colorSurface"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
             <ImageView
@@ -360,7 +371,7 @@
                 android:layout_height="20dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_heart"
-                app:tint="#757575"/>
+                app:tint="?android:attr/textColorSecondary"/>
         </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -369,7 +380,7 @@
         android:id="@+id/bottomLayout"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="#EAF5F8"
+        android:background="?attr/colorSurfaceVariant"
         android:paddingHorizontal="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -388,7 +399,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Total price"
-                android:textColor="#78909C"
+                android:textColor="?android:attr/textColorSecondary"
                 android:textSize="12sp"/>
 
             <TextView
@@ -407,6 +418,7 @@
             android:layout_height="48dp"
             android:orientation="horizontal"
             android:background="@drawable/bg_pill_counter"
+            android:backgroundTint="?attr/colorPrimary"
             android:gravity="center"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

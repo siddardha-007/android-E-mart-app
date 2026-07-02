@@ -11,6 +11,7 @@
     </queries>
 
     <application
+
         android:name=".EcommerceApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -19,7 +20,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Ecommerce">
+        android:theme="@style/Theme.Ecommerce"
+        android:animateLayoutChanges="true">
         <activity
             android:name=".ui.payment.ReceiptActivity"
             android:exported="false" />
@@ -56,6 +58,7 @@
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="false" />
+
     </application>
 
 </manifest>

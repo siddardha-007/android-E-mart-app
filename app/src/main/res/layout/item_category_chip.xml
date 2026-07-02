@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Category"
-        android:textColor="#9E9E9E"
+        android:textColor="?android:attr/textColorSecondary"
         android:textStyle="bold"
         android:textSize="15sp"/>
 
@@ -21,4 +21,5 @@
         android:layout_width="24dp"
         android:layout_height="3dp"
         android:layout_marginTop="6dp"
-        android:background="#1A6E8A"/> </LinearLayout>
+        android:background="?attr/colorPrimary"/>
+</LinearLayout>

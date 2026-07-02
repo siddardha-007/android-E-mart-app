@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="?android:attr/windowBackground">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/btnBack"
@@ -14,7 +14,7 @@
         app:cardCornerRadius="20dp"
         app:cardElevation="2dp"
         app:strokeWidth="0dp"
-        app:cardBackgroundColor="#FFFFFF"
+        app:cardBackgroundColor="?attr/colorSurfaceVariant"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent">
         <ImageView
@@ -22,7 +22,7 @@
             android:layout_height="18dp"
             android:layout_gravity="center"
             android:src="@drawable/ic_back"
-            app:tint="#333333"/>
+            app:tint="?android:attr/textColorPrimary"/>
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.tabs.TabLayout
@@ -30,11 +30,11 @@
         android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        app:tabIndicatorColor="#2A83A2"
+        app:tabIndicatorColor="?attr/colorPrimary"
         app:tabIndicatorHeight="3dp"
         app:tabRippleColor="@android:color/transparent"
-        app:tabSelectedTextColor="#2A83A2"
-        app:tabTextColor="#90A4AE"
+        app:tabSelectedTextColor="?attr/colorPrimary"
+        app:tabTextColor="?android:attr/textColorSecondary"
         app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
         app:layout_constraintTop_toTopOf="@id/btnBack"
         app:layout_constraintBottom_toBottomOf="@id/btnBack"

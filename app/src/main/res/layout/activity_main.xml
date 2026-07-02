@@ -4,27 +4,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F9FA">
+    android:background="?android:attr/windowBackground">
 
     <FrameLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigationContainer"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/bottomNavigationContainer"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="72dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="12dp"
-        app:cardCornerRadius="28dp"
-        app:cardElevation="12dp"
-        app:cardBackgroundColor="#FFFFFF"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="36dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="?attr/colorSurface"
         app:strokeWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,12 +35,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
-            app:itemIconSize="32dp"
-
+            app:itemIconSize="28dp"
             app:itemIconTint="@null"
-
-            android:layerType="software"
-
+            app:itemActiveIndicatorStyle="@null"
             app:itemBackground="@drawable/nav_item_background_selector"
             app:labelVisibilityMode="unlabeled"
             app:menu="@menu/bottom_nav_menu"/>

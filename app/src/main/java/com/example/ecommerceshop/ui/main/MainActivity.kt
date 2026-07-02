@@ -2,7 +2,12 @@ package com.example.ecommerceshop.ui.main
 
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import com.example.ecommerceshop.R
 import com.example.ecommerceshop.databinding.ActivityMainBinding
@@ -20,7 +25,21 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         binding.bottomNavigation.itemIconTintList = null
+
+        // FIX: Dynamically separate the fragment container from the bottom navigation
+        // It calculates the height of the bar + its margins so fragments never overlap.
+        binding.bottomNavigationContainer.post {
+            val navBarHeight = binding.bottomNavigationContainer.height
+            val layoutParams = binding.bottomNavigationContainer.layoutParams as ViewGroup.MarginLayoutParams
+            val totalBarOffset = navBarHeight + layoutParams.bottomMargin
+
+            // Constrain the fragment container to end right where the navigation pill begins
+            binding.fragmentContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin = totalBarOffset
+            }
+        }
 
         // Setup Selection Listener
         binding.bottomNavigation.setOnItemSelectedListener { item ->
@@ -49,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             binding.bottomNavigation.selectedItemId = R.id.nav_home
 
-            // Optional: Creates the red notification badge over your cart icon
+            // Creates the red notification badge over your cart icon
             val badge = binding.bottomNavigation.getOrCreateBadge(R.id.nav_cart)
             badge.isVisible = true
             badge.number = 4

@@ -1,58 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="165dp"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="4dp">
+    android:layout_margin="6dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="#FFFFFF" app:strokeWidth="0dp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="8dp">
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/tvDiscountBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="52%\nOff"
+            android:textColor="#1A6E8A"
+            android:textSize="9sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="4dp"
+            android:background="@drawable/bg_discount_pill_light"
+            android:backgroundTint="#F0F7F9" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <ImageView
+            android:id="@+id/ivWishlist"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_heart"
+            app:tint="#7A8B94" android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <ImageView
             android:id="@+id/ivProduct"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher"/>
-
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:text="Product Title"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:id="@+id/tvCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Category"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="14sp"/>
+            android:layout_height="100dp"
+            android:layout_marginTop="12dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintTop_toBottomOf="@id/tvDiscountBadge"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
             android:id="@+id/tvPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="₹999"
-            android:textColor="#4CAF50"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:layout_marginTop="8dp"
+            android:text="₹650"
+            android:textColor="#FF2D55"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/ivProduct"
+            app:layout_constraintStart_toStartOf="parent"/>
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/tvOriginalPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="₹1200"
+            android:textColor="#9E9E9E"
+            android:textSize="10sp"
+            app:layout_constraintTop_toBottomOf="@id/tvPrice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnAddAction"/>
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:text="Bell Pepper Nutella karmen lopu.."
+            android:textColor="#212121" android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/tvOriginalPrice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="4dp"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnAddAction"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp"
+            app:cardBackgroundColor="#1A6E8A" android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:layout_constraintBottom_toTopOf="@id/tvTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="2dp">
+
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_plus1"
+                app:tint="#FFFFFF"/> </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

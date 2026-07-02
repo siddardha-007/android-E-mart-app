@@ -1,9 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.Ecommerce" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-    </style>
+    <style name="Theme.Ecommerce" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/window_background_light</item>
+        <item name="colorPrimary">@color/primary_brand</item>
+        <item name="colorSurfaceVariant">@color/surface_card_light</item>
 
-    <style name="Theme.Ecommerce" parent="Base.Theme.Ecommerce" />
+        <item name="colorSurface">@color/window_background_light</item>
+
+        <item name="android:textColorPrimary">@color/text_main_light</item>
+        <item name="android:textColorSecondary">@color/text_secondary_light</item>
+    </style>
 </resources>

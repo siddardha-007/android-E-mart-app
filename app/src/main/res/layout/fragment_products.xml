@@ -5,7 +5,7 @@
     xmlns:tools="http://tools.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="?android:attr/windowBackground">
 
     <LinearLayout
         android:id="@+id/layoutHeader"
@@ -27,14 +27,14 @@
             app:cardCornerRadius="22dp"
             app:cardElevation="2dp"
             app:strokeWidth="0dp"
-            app:cardBackgroundColor="#FFFFFF">
+            app:cardBackgroundColor="?attr/colorSurfaceVariant">
 
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_back"
-                app:tint="#333333"/>
+                app:tint="?android:attr/textColorPrimary"/>
         </com.google.android.material.card.MaterialCardView>
 
         <FrameLayout
@@ -42,7 +42,8 @@
             android:layout_height="46dp"
             android:layout_weight="1"
             android:layout_marginStart="12dp"
-            android:background="@drawable/bg_search_rounded">
+            android:background="@drawable/bg_search_rounded"
+            android:backgroundTint="?attr/colorSurfaceVariant">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -55,7 +56,7 @@
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:src="@android:drawable/ic_menu_search"
-                    app:tint="#1A6E8A"/>
+                    app:tint="?attr/colorPrimary"/>
 
                 <EditText
                     android:id="@+id/etSearch"
@@ -63,8 +64,8 @@
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
                     android:hint="Search products..."
-                    android:textColorHint="#999999"
-                    android:textColor="#333333"
+                    android:textColorHint="?android:attr/textColorSecondary"
+                    android:textColor="?android:attr/textColorPrimary"
                     android:textSize="14sp"
                     android:layout_marginStart="8dp"
                     android:inputType="text"
@@ -105,7 +106,8 @@
                 android:layout_height="match_parent"
                 android:paddingHorizontal="12dp"
                 android:paddingTop="8dp"
-                android:paddingBottom="100dp" android:clipToPadding="false"/>
+                android:paddingBottom="100dp"
+                android:clipToPadding="false"/>
 
             <LinearLayout
                 android:id="@+id/layoutEmpty"
@@ -119,7 +121,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@android:drawable/ic_menu_report_image"
-                    app:tint="#CCCCCC"/>
+                    app:tint="?android:attr/textColorSecondary"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -128,7 +130,7 @@
                     android:text="No Products Found"
                     android:textStyle="bold"
                     android:textSize="18sp"
-                    android:textColor="#333333"/>
+                    android:textColor="?android:attr/textColorPrimary"/>
             </LinearLayout>
 
             <ProgressBar

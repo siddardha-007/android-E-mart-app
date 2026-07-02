@@ -1,71 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="6dp">
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="0dp"
+    app:strokeWidth="0dp"
+    app:cardBackgroundColor="?attr/colorSurface">
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- Banner Image -->
-
-        <ImageView
-            android:id="@+id/ivBanner"
-            android:layout_width="match_parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutLeftPanel"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/banner_placeholder"/>
+            android:background="@drawable/bg_banner_left_panel"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="14dp"
+            app:layout_constraintHorizontal_weight="1.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ivBanner"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-        <!-- Dark Overlay -->
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#55000000"/>
-
-        <!-- Banner Content -->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center_vertical"
-            android:padding="20dp">
+            <TextView
+                android:id="@+id/tvBannerSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shop now"
+                android:textColor="#B3FFFFFF"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-medium"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/tvBannerTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Fresh Vegetables"
-                android:textColor="@android:color/white"
-                android:textSize="28sp"
-                android:textStyle="bold"/>
+                android:layout_marginTop="2dp"
+                android:text="Pay Later !"
+                android:textColor="#FFFFFF"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:ellipsize="end"
+                app:layout_constraintTop_toBottomOf="@id/tvBannerSubtitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Pay Later !" />
 
             <TextView
-                android:id="@+id/tvBannerDescription"
+                android:id="@+id/tvBannerBadge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Up to 40% OFF"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"/>
+                android:text="OCTOBER 7"
+                android:textColor="#0F78A0"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="5dp"
+                android:background="@drawable/bg_pill_bordered"
+                android:backgroundTint="#47A3C9"
+                app:layout_constraintTop_toBottomOf="@id/tvBannerTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="OCTOBER 7" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnShopNow"
+            <TextView
+                android:id="@+id/tvBannerDisclaimer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Shop Now"
-                android:textAllCaps="false"
-                app:cornerRadius="12dp"/>
+                android:layout_marginTop="6dp"
+                android:text="T&amp;C apply"
+                android:textColor="#80FFFFFF"
+                android:textSize="8sp"
+                app:layout_constraintTop_toBottomOf="@id/tvBannerBadge"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </FrameLayout>
+        <ImageView
+            android:id="@+id/ivBanner"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/banner_placeholder"
+            app:layout_constraintHorizontal_weight="1.0"
+            app:layout_constraintStart_toEndOf="@id/layoutLeftPanel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:src="@drawable/bg_delivery_scooter" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

@@ -42,7 +42,6 @@ class ProductsFragment : Fragment() {
         setupSwipeRefresh()
         loadData()
 
-        // Set up manual action to return or pop fragment back stack
         binding.btnBack.setOnClickListener {
             activity?.onBackPressedDispatcher?.onBackPressed()
         }
@@ -70,7 +69,6 @@ class ProductsFragment : Fragment() {
         binding.rvProducts.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvProducts.adapter = productAdapter
 
-        // FIXED: Using CategoryChipAdapter instead of CategoryAdapter
         categoryAdapter = CategoryChipAdapter(emptyList()) { category ->
             if (category.id == -1) {
                 homeViewModel.getAllProducts()
@@ -99,8 +97,6 @@ class ProductsFragment : Fragment() {
             val categories = mutableListOf<Category>()
             categories.add(Category(id = -1, name = "All", image = ""))
             categories.addAll(apiCategories)
-
-            // FIXED: Calls updateData() defined inside your CategoryChipAdapter
             categoryAdapter.updateData(categories)
         }
 

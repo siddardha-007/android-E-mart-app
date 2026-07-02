@@ -106,4 +106,7 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     implementation("com.google.firebase:firebase-appcheck-debug:19.2.0")
+
+    //lottie
+    implementation("com.airbnb.android:lottie:6.4.0")
 }

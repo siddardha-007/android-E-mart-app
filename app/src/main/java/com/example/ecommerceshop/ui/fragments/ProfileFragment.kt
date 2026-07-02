@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.ecommerceshop.databinding.FragmentProfileBinding
 import com.example.ecommerceshop.ui.auth.LoginActivity
+import com.example.ecommerceshop.ui.emailauth.EmailLoginActivity
 import com.example.ecommerceshop.utils.PreferenceManager
+import com.google.firebase.auth.FirebaseAuth
 
 class ProfileFragment : Fragment() {
 
@@ -36,11 +38,25 @@ class ProfileFragment : Fragment() {
 
     private fun loadUserData() {
 
-        binding.tvName.text =
-            preferenceManager.getUserName()
+        val user = FirebaseAuth.getInstance().currentUser ?: return
 
-        binding.tvPhone.text =
-            preferenceManager.getPhoneNumber()
+
+        com.google.firebase.firestore.FirebaseFirestore.getInstance()
+            .collection("users")
+            .document(user.uid)
+            .get()
+            .addOnSuccessListener { document ->
+
+                val name = document.getString("name") ?: "Guest"
+
+                binding.tvName.text = "Hello, $name"
+
+            }
+            .addOnFailureListener {
+
+                binding.tvName.text = "Hello, Guest"
+
+            }
 
     }
 
@@ -72,15 +88,14 @@ class ProfileFragment : Fragment() {
 
         binding.btnLogout.setOnClickListener {
 
-            preferenceManager.logout()
+            FirebaseAuth.getInstance().signOut()
 
-            startActivity(
-                Intent(
-                    requireContext(),
-                    LoginActivity::class.java
-                )
-            )
+            PreferenceManager(requireContext()).logout()
 
+            val intent = Intent(requireContext(), EmailLoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+            startActivity(intent)
             requireActivity().finish()
 
         }

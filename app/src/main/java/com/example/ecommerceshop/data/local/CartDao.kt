@@ -1,57 +1,60 @@
 package com.example.ecommerceshop.data.local
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.example.ecommerceshop.model.CartItem
 
 @Dao
 interface CartDao {
 
     /**
-     * Insert a new item into the cart.
-     * If the product already exists, replace it.
+     * Insert Cart Item
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCartItem(cartItem: CartItem)
 
     /**
-     * Get all cart items.
+     * Get Cart Items of Logged-in User
      */
-    @Query("SELECT * FROM cart_items")
-    fun getCartItems(): LiveData<List<CartItem>>
+    @Query("SELECT * FROM cart_items WHERE userId = :userId")
+    fun getCartItems(userId: String): LiveData<List<CartItem>>
 
     /**
-     * Update an existing cart item.
+     * Update Cart Item
      */
     @Update
     suspend fun updateCartItem(cartItem: CartItem)
 
     /**
-     * Delete a single cart item.
+     * Delete Single Item
      */
     @Delete
     suspend fun deleteCartItem(cartItem: CartItem)
 
     /**
-     * Delete all items from the cart.
+     * Clear Cart of Logged-in User
      */
-    @Query("DELETE FROM cart_items")
-    suspend fun clearCart()
+    @Query("DELETE FROM cart_items WHERE userId = :userId")
+    suspend fun clearCart(userId: String)
 
     /**
-     * Get a single item by product ID.
+     * Get Existing Product of Logged-in User
      */
-    @Query("SELECT * FROM cart_items WHERE productId = :productId LIMIT 1")
-    suspend fun getCartItemById(productId: Int): CartItem?
+    @Query("""
+        SELECT * FROM cart_items
+        WHERE userId = :userId
+        AND productId = :productId
+        LIMIT 1
+    """)
+    suspend fun getCartItemById(
+        userId: String,
+        productId: Int
+    ): CartItem?
 
     /**
-     * Get total number of items in the cart.
+     * Get Cart Count of Logged-in User
      */
-    @Query("SELECT COUNT(*) FROM cart_items")
-    fun getCartItemCount(): LiveData<Int>
+    @Query("SELECT COUNT(*) FROM cart_items WHERE userId = :userId")
+    fun getCartItemCount(userId: String): LiveData<Int>
+
 }

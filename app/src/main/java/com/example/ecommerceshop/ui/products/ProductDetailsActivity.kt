@@ -9,6 +9,8 @@ import com.example.ecommerceshop.databinding.ActivityProductDetailsBinding
 import com.example.ecommerceshop.model.CartItem
 import com.example.ecommerceshop.model.Product
 import com.example.ecommerceshop.viewmodel.CartViewModel
+import com.example.ecommerceshop.utils.PreferenceManager
+import com.google.firebase.auth.FirebaseAuth
 
 class ProductDetailsActivity : AppCompatActivity() {
 
@@ -86,15 +88,48 @@ class ProductDetailsActivity : AppCompatActivity() {
 
         // Trigger cart dispatch on counter container pill click
         binding.btnCounterContainer.setOnClickListener {
+
+            val firebaseUser = FirebaseAuth.getInstance().currentUser
+
+            if (firebaseUser == null) {
+
+                Toast.makeText(
+                    this,
+                    "Please login first",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                return@setOnClickListener
+            }
+
+            val preferenceManager = PreferenceManager(this)
+
             val cartItem = CartItem(
+
+                userId = firebaseUser.uid,
+
+                userName = preferenceManager.getUserName(),
+
                 productId = product.id,
+
                 title = product.title,
+
                 image = product.images.firstOrNull() ?: "",
+
                 price = product.price,
+
                 quantity = quantityCounter
+
             )
+
             cartViewModel.addToCart(cartItem)
-            Toast.makeText(this, "$quantityCounter item(s) pushed to Cart", Toast.LENGTH_SHORT).show()
+
+            Toast.makeText(
+                this,
+                "$quantityCounter item(s) added to Cart",
+                Toast.LENGTH_SHORT
+            ).show()
+
         }
     }
 

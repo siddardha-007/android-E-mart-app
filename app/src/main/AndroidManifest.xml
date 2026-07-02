@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <queries>
         <package android:name="com.google.android.gms" />
@@ -20,9 +21,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ecommerce">
         <activity
+            android:name=".ui.payment.ReceiptActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.emailauth.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.emailauth.EmailLoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.payment.PaymentSuccessActivity"
             android:exported="false" />
-
         <activity
             android:name=".ui.products.ProductDetailsActivity"
             android:exported="false" />

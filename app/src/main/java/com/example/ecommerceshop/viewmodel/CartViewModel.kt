@@ -3,15 +3,20 @@ package com.example.ecommerceshop.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.ecommerceshop.data.local.CartDatabase
 import com.example.ecommerceshop.data.repository.CartRepository
 import com.example.ecommerceshop.model.CartItem
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 
 class CartViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: CartRepository
+
+    private val userId: String =
+        FirebaseAuth.getInstance().currentUser?.uid ?: ""
 
     val cartItems: LiveData<List<CartItem>>
 
@@ -25,9 +30,10 @@ class CartViewModel(application: Application) : AndroidViewModel(application) {
 
         repository = CartRepository(cartDao)
 
-        cartItems = repository.allCartItems
+        cartItems = repository.getCartItems(userId)
 
-        cartItemCount = repository.cartItemCount
+        cartItemCount = repository.getCartItemCount(userId)
+
     }
 
     /**
@@ -38,7 +44,10 @@ class CartViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch {
 
             val existingItem =
-                repository.getCartItemById(cartItem.productId)
+                repository.getCartItemById(
+                    userId,
+                    cartItem.productId
+                )
 
             if (existingItem != null) {
 
@@ -53,7 +62,9 @@ class CartViewModel(application: Application) : AndroidViewModel(application) {
                 repository.insertCartItem(cartItem)
 
             }
+
         }
+
     }
 
     /**
@@ -73,17 +84,17 @@ class CartViewModel(application: Application) : AndroidViewModel(application) {
             } else {
 
                 repository.updateCartItem(
-                    cartItem.copy(quantity = quantity)
+                    cartItem.copy(
+                        quantity = quantity
+                    )
                 )
 
             }
 
         }
+
     }
 
-    /**
-     * Increase quantity
-     */
     fun increaseQuantity(cartItem: CartItem) {
 
         updateQuantity(
@@ -93,9 +104,6 @@ class CartViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
-    /**
-     * Decrease quantity
-     */
     fun decreaseQuantity(cartItem: CartItem) {
 
         updateQuantity(
@@ -105,9 +113,6 @@ class CartViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
-    /**
-     * Remove single item
-     */
     fun removeItem(cartItem: CartItem) {
 
         viewModelScope.launch {
@@ -119,22 +124,24 @@ class CartViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     /**
-     * Clear cart
+     * Clear current user's cart
      */
     fun clearCart() {
 
         viewModelScope.launch {
 
-            repository.clearCart()
+            repository.clearCart(userId)
 
         }
 
     }
 
     /**
-     * Calculate total price
+     * Total price
      */
-    fun calculateTotal(items: List<CartItem>): Double {
+    fun calculateTotal(
+        items: List<CartItem>
+    ): Double {
 
         return items.sumOf {
 
@@ -143,4 +150,5 @@ class CartViewModel(application: Application) : AndroidViewModel(application) {
         }
 
     }
+
 }

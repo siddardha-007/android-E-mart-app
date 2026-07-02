@@ -10,70 +10,80 @@ class PreferenceManager(context: Context) {
 
     companion object {
 
-        private const val IS_LOGGED_IN = "is_logged_in"
+        private const val IS_WALKTHROUGH_COMPLETED = "is_walkthrough_completed"
+
         private const val USER_NAME = "user_name"
-        private const val PHONE_NUMBER = "phone_number"
+
+        private const val USER_EMAIL = "user_email"
 
     }
 
-    /**
-     * Save Login Session
-     */
-    fun saveLoginSession(
-        name: String,
-        phone: String
-    ) {
+    // Walkthrough
+
+    fun setWalkthroughCompleted() {
 
         sharedPreferences.edit()
-            .putBoolean(IS_LOGGED_IN, true)
-            .putString(USER_NAME, name)
-            .putString(PHONE_NUMBER, phone)
+            .putBoolean(IS_WALKTHROUGH_COMPLETED, true)
             .apply()
 
     }
 
-    /**
-     * Check Login
-     */
-    fun isLoggedIn(): Boolean {
+    fun logout() {
+
+        sharedPreferences.edit()
+            .remove(USER_NAME)
+            .remove(USER_EMAIL)
+            .apply()
+
+    }
+
+    fun isWalkthroughCompleted(): Boolean {
 
         return sharedPreferences.getBoolean(
-            IS_LOGGED_IN,
+            IS_WALKTHROUGH_COMPLETED,
             false
         )
 
     }
 
-    /**
-     * Username
-     */
+    // User Details (optional cache)
+
+    fun saveUserDetails(
+        name: String,
+        email: String
+    ) {
+
+        sharedPreferences.edit()
+            .putString(USER_NAME, name)
+            .putString(USER_EMAIL, email)
+            .apply()
+
+    }
+
     fun getUserName(): String {
 
         return sharedPreferences.getString(
             USER_NAME,
-            "Guest User"
-        ) ?: "Guest User"
+            "Guest"
+        ) ?: "Guest"
 
     }
 
-    /**
-     * Phone Number
-     */
-    fun getPhoneNumber(): String {
+    fun getUserEmail(): String {
 
         return sharedPreferences.getString(
-            PHONE_NUMBER,
+            USER_EMAIL,
             ""
         ) ?: ""
 
     }
 
-    /**
-     * Logout
-     */
-    fun logout() {
+    fun clearUserData() {
 
-        sharedPreferences.edit().clear().apply()
+        sharedPreferences.edit()
+            .remove(USER_NAME)
+            .remove(USER_EMAIL)
+            .apply()
 
     }
 

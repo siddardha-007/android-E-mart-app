@@ -9,6 +9,8 @@ import com.bumptech.glide.Glide
 import com.example.ecommerceshop.databinding.ItemProductGridBinding
 import com.example.ecommerceshop.model.CartItem
 import com.example.ecommerceshop.model.Product
+import com.example.ecommerceshop.utils.PreferenceManager
+import com.google.firebase.auth.FirebaseAuth
 
 class ProductGridAdapter(
     private var products: List<Product>,
@@ -55,14 +57,37 @@ class ProductGridAdapter(
             }
 
             binding.btnAddCart.setOnClickListener {
+
+                val context = binding.root.context
+
+                val firebaseUser = FirebaseAuth.getInstance().currentUser
+
+                if (firebaseUser == null) {
+                    return@setOnClickListener
+                }
+
+                val preferenceManager = PreferenceManager(context)
+
                 val cartItem = CartItem(
+
+                    userId = firebaseUser.uid,
+
+                    userName = preferenceManager.getUserName(),
+
                     productId = product.id,
+
                     title = product.title,
+
                     image = product.images.firstOrNull() ?: "",
+
                     price = product.price,
+
                     quantity = 1
+
                 )
+
                 onAddToCartClick(cartItem)
+
             }
         }
     }

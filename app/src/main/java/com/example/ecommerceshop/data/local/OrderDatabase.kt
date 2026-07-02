@@ -4,30 +4,30 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.ecommerceshop.model.CartItem
+import com.example.ecommerceshop.model.Order
 
 @Database(
-    entities = [CartItem::class],
-    version = 2,
+    entities = [Order::class],
+    version = 1,
     exportSchema = false
 )
-abstract class CartDatabase : RoomDatabase() {
+abstract class OrderDatabase : RoomDatabase() {
 
-    abstract fun cartDao(): CartDao
+    abstract fun orderDao(): OrderDao
 
     companion object {
 
         @Volatile
-        private var INSTANCE: CartDatabase? = null
+        private var INSTANCE: OrderDatabase? = null
 
-        fun getDatabase(context: Context): CartDatabase {
+        fun getDatabase(context: Context): OrderDatabase {
 
             return INSTANCE ?: synchronized(this) {
 
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    CartDatabase::class.java,
-                    "cart_database"
+                    OrderDatabase::class.java,
+                    "order_database"
                 )
                     .fallbackToDestructiveMigration()
                     .build()
@@ -35,7 +35,11 @@ abstract class CartDatabase : RoomDatabase() {
                 INSTANCE = instance
 
                 instance
+
             }
+
         }
+
     }
+
 }

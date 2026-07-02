@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ecommerceshop.databinding.ActivityPaymentSuccessBinding
-import com.example.ecommerceshop.ui.main.MainActivity
 
 class PaymentSuccessActivity : AppCompatActivity() {
 
@@ -19,24 +18,77 @@ class PaymentSuccessActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        // Handle button redirect
+
+
+        binding.btnContinueShopping.text = "View Receipt"
+
         binding.btnContinueShopping.setOnClickListener {
-            navigateToHome()
+
+            openReceipt()
+
         }
 
-        // Handle system back button properly using modern OnBackPressedDispatcher APIs
-        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                navigateToHome()
+        onBackPressedDispatcher.addCallback(
+            this,
+            object : OnBackPressedCallback(true) {
+
+                override fun handleOnBackPressed() {
+
+                    openReceipt()
+
+                }
+
             }
-        })
+        )
+
     }
 
-    private fun navigateToHome() {
-        val intent = Intent(this, MainActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        }
+    private fun openReceipt() {
+
+        val intent = Intent(
+            this,
+            ReceiptActivity::class.java
+        )
+
+        intent.putExtra(
+            "CUSTOMER_NAME",
+            getIntent().getStringExtra("CUSTOMER_NAME")
+        )
+
+        intent.putExtra(
+            "CUSTOMER_PHONE",
+            getIntent().getStringExtra("CUSTOMER_PHONE")
+        )
+
+        intent.putExtra(
+            "CUSTOMER_ADDRESS",
+            getIntent().getStringExtra("CUSTOMER_ADDRESS")
+        )
+
+        intent.putExtra(
+            "ADDRESS_TYPE",
+            getIntent().getStringExtra("ADDRESS_TYPE")
+        )
+
+        intent.putExtra(
+            "PAYMENT_MODE",
+            getIntent().getStringExtra("PAYMENT_MODE")
+        )
+
+        intent.putExtra(
+            "TOTAL_ITEMS",
+            getIntent().getIntExtra("TOTAL_ITEMS", 0)
+        )
+
+        intent.putExtra(
+            "TOTAL_AMOUNT",
+            getIntent().getDoubleExtra("TOTAL_AMOUNT", 0.0)
+        )
+
         startActivity(intent)
+
         finish()
+
     }
+
 }

@@ -8,36 +8,73 @@ class CartRepository(
     private val cartDao: CartDao
 ) {
 
-    // Get all cart items
-    val allCartItems: LiveData<List<CartItem>> =
-        cartDao.getCartItems()
+    /**
+     * Get all cart items of a user
+     */
+    fun getCartItems(userId: String): LiveData<List<CartItem>> {
 
-    // Get cart count
-    val cartItemCount: LiveData<Int> =
-        cartDao.getCartItemCount()
+        return cartDao.getCartItems(userId)
 
-    // Insert product into cart
+    }
+
+    /**
+     * Get cart count of a user
+     */
+    fun getCartItemCount(userId: String): LiveData<Int> {
+
+        return cartDao.getCartItemCount(userId)
+
+    }
+
+    /**
+     * Insert item
+     */
     suspend fun insertCartItem(cartItem: CartItem) {
+
         cartDao.insertCartItem(cartItem)
+
     }
 
-    // Update cart item
+    /**
+     * Update item
+     */
     suspend fun updateCartItem(cartItem: CartItem) {
+
         cartDao.updateCartItem(cartItem)
+
     }
 
-    // Delete cart item
+    /**
+     * Delete item
+     */
     suspend fun deleteCartItem(cartItem: CartItem) {
+
         cartDao.deleteCartItem(cartItem)
+
     }
 
-    // Clear entire cart
-    suspend fun clearCart() {
-        cartDao.clearCart()
+    /**
+     * Clear logged-in user's cart
+     */
+    suspend fun clearCart(userId: String) {
+
+        cartDao.clearCart(userId)
+
     }
 
-    // Check if product already exists
-    suspend fun getCartItemById(productId: Int): CartItem? {
-        return cartDao.getCartItemById(productId)
+    /**
+     * Check if product already exists for logged-in user
+     */
+    suspend fun getCartItemById(
+        userId: String,
+        productId: Int
+    ): CartItem? {
+
+        return cartDao.getCartItemById(
+            userId,
+            productId
+        )
+
     }
+
 }
